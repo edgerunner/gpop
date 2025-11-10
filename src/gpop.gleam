@@ -7,7 +7,7 @@ import gleam/list
 import gleam/option.{type Option, None, Some}
 import gleam/pair
 import gleam/time/timestamp
-import gleam/uri
+import gleam/uri.{Uri}
 import youid/uuid
 
 pub opaque type Key {
@@ -67,13 +67,11 @@ fn header_json(key: Key) -> Json {
 }
 
 fn jwk_json(key: Key) -> Json {
-  let Key(x: x, y: y, ..) = key
-
   json.object([
     #("kty", json.string("EC")),
     #("crv", json.string("P-256")),
-    #("x", json.string(encode_coordinate(x))),
-    #("y", json.string(encode_coordinate(y))),
+    #("x", json.string(encode_coordinate(key.x))),
+    #("y", json.string(encode_coordinate(key.y))),
   ])
 }
 
@@ -82,12 +80,12 @@ fn payload_json(
   nonce: Option(String),
   ath: Option(String),
 ) -> Json {
-  let method = http.method_to_string(request.method)
-  let url = request |> request.to_uri |> uri.to_string
+  let htm = http.method_to_string(request.method)
+  let htu = Uri(..request.to_uri(request), query: None, fragment: None)
   let claims =
     [
-      #("htm", json.string(method)),
-      #("htu", json.string(url)),
+      #("htm", json.string(htm)),
+      #("htu", json.string(uri.to_string(htu))),
       #("jti", json.string(uuid.v4_string())),
       #("iat", json.int(current_epoch_seconds())),
     ]

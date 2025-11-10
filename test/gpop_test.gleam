@@ -38,6 +38,7 @@ pub fn dpop_proof_encodes_request_test() {
     |> http_request.set_method(http.Post)
     |> http_request.set_host("server.test")
     |> http_request.set_path("/token")
+    |> http_request.set_query([#("ignore", "this")])
 
   let updated = gpop.with_proof(request, key, option.None)
   let assert Ok(proof) = http_request.get_header(updated, "dpop")
