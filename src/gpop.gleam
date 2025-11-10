@@ -10,6 +10,7 @@ import gleam/time/timestamp
 import gleam/uri.{Uri}
 import youid/uuid
 
+/// An ES256 key pair suitable for DPoP proofs
 pub opaque type Key {
   Key(pair: P256Keypair, x: BitArray, y: BitArray)
 }
