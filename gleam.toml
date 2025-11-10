@@ -1,16 +1,21 @@
 name = "gpop"
 version = "0.1.0"
 
-# Fill out these fields if you intend to generate HTML documentation or publish
-# your project to the Hex package manager.
-#
-# description = ""
-# licences = ["Apache-2.0"]
-# repository = { type = "github", user = "", repo = "" }
-# links = [{ title = "Website", href = "" }]
-#
+# Documentation related fields
+licences = ["Apache-2.0"]
+description = "Attach DPoP proofs to your Requests"
+repository = { type = "github", user = "edgerunner", repo = "gpop" }
+links = [
+  { title = "RFC 9449", href = "https://datatracker.ietf.org/doc/html/rfc9449#name-dpop-proof-jwts" },
+]
+
 # For a full reference of all the available options, you can have a look at
 # https://gleam.run/writing-gleam/gleam-toml/.
+
+# The version of the Gleam compiler that the package requires (optional)
+# An error is raised if the version of the compiler used to compile the package
+# does not match this requirement.
+gleam = ">= 1.13.0"
 
 [dependencies]
 gleam_stdlib = ">= 0.44.0 and < 2.0.0"
