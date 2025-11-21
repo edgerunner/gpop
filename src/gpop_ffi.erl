@@ -10,4 +10,8 @@ generate_p256_keypair() ->
     {Key, PublicKey}.
 
 sign_es256(Message, Key) ->
-    public_key:sign(Message, sha256, Key).
+    DerSig = public_key:sign(Message, sha256, Key),
+    {'ECDSA-Sig-Value', R, S} = public_key:der_decode('ECDSA-Sig-Value', DerSig),
+    RBin = <<R:256>>,
+    SBin = <<S:256>>,
+    <<RBin/binary, SBin/binary>>.
