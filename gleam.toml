@@ -1,5 +1,5 @@
 name = "gpop"
-version = "0.1.0"
+version = "0.1.1"
 
 # Documentation related fields
 licences = ["Apache-2.0"]
