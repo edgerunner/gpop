@@ -2,6 +2,10 @@
 
 [![Package Version](https://img.shields.io/hexpm/v/gpop)](https://hex.pm/packages/gpop)
 [![Hex Docs](https://img.shields.io/badge/hex-docs-ffaff3)](https://hexdocs.pm/gpop/)
+[![GitHub License](https://img.shields.io/github/license/edgerunner/gpop)](https://github.com/edgerunner/gpop/blob/development/LICENSE)
+![Platform: Erlang](https://img.shields.io/badge/platform-erlang-orange?label=platform&color=orange)
+
+
 
 gpop is a tiny Gleam helper for producing [DPoP proofs](https://datatracker.ietf.org/doc/html/rfc9449)
 with `gleam_http` requests. It uses Erlang's `public_key` module under the hood to
@@ -48,3 +52,4 @@ gleam test  # Run the tests
 ### The future
 - [ ] Support more signing algorithms (Please open an issue)
 - [ ] Verify DPoP tokens
+- [ ] Javascript platform support through the WebCrypto API
